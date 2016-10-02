@@ -7,6 +7,12 @@ var random = {
             Math.cos(angle) * Math.sqrt(1 - Math.pow(unitVector, 2)) * radius,
             Math.sin(angle) * Math.sqrt(1 - Math.pow(unitVector, 2)) * radius,
             unitVector * radius);
+    },
+    
+    onCube: function (size) {
+        return new THREE.Vector3(
+            Math.random() * size - size / 2,
+	    Math.random() * size - size / 2,
+	    Math.random() * size - size / 2);
     }
 }
-
