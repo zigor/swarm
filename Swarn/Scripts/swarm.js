@@ -14,7 +14,7 @@
    
             var sample = new Sample(2000);
             sample.setPositionRule(function () {
-                return random.onSphere(radius - 100 + Math.random() * radius);
+                return random.inSphere(radius - 100 + Math.random() * radius);
             }).setColorRule(function(v3) {
                 return new THREE.Color().setRGB(v3.x / 10 + 0.5, v3.y / 10 + 0.5, v3.z / 10 + 0.5);
             }).refresh();
