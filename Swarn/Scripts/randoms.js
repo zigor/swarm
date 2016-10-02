@@ -1,5 +1,5 @@
 var random = {
-    onSphere: function (radius) {
+    inSphere: function (radius) {
         var angle = Math.random() * Math.PI * 2;
         var unitVector = Math.random() * 2 - 1;
 
@@ -9,10 +9,19 @@ var random = {
             unitVector * radius);
     },
     
-    onCube: function (size) {
+    inCube: function (size) {
         return new THREE.Vector3(
             Math.random() * size - size / 2,
 	    Math.random() * size - size / 2,
 	    Math.random() * size - size / 2);
+    }, 
+
+    inCylinder: function (radius, height) {
+        var angle = Math.random() * Math.PI * 2;
+         
+        return new THREE.Vector3(
+            Math.sqrt(Math.random()) * radius * Math.cos(angel),
+            Math.sqrt(Math.random()) * radius * math.sin(angel),
+            Math.random() * height); 
     }
 }
