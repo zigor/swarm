@@ -12,11 +12,12 @@
             scene.fog = new THREE.Fog(0x050505, 2000, 3500);
             var geometry = new THREE.BufferGeometry();
    
-            var sample = new Sample(2000);
+            var sample = new Sample(10000);
             sample.setPositionRule(function () {
-                return random.inSphere(radius - 100 + Math.random() * radius);
-            }).setColorRule(function(v3) {
-                return new THREE.Color().setRGB(v3.x / 10 + 0.5, v3.y / 10 + 0.5, v3.z / 10 + 0.5);
+                return random.inCylinder(radius - 100 + Math.random() * radius, 500);
+            }).setColorRule(function (v3) {
+                
+                return  new THREE.Color().setRGB(1, 1, 1);
             }).refresh();
             
             geometry.addAttribute('position', new THREE.BufferAttribute(sample.positions, 3));
