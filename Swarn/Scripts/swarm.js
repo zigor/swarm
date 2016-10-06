@@ -14,7 +14,7 @@
    
             var sample = new Sample(10000);
             sample.setPositionRule(function () {
-                return random.inCylinder(radius - 100 + Math.random() * radius, 500);
+                return random.inCone(radius - 100 + Math.random() * radius, 500);
             }).setColorRule(function (v3) {
                 
                 return  new THREE.Color().setRGB(1, 1, 1);
