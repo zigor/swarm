@@ -14,7 +14,7 @@
    
             var sample = new Sample(10000);
             sample.setPositionRule(function () {
-                return random.inCone(radius - 100 + Math.random() * radius, 500);
+                return random.inEllipsoid(radius - 100 + Math.random() * radius, 500, 200);
             }).setColorRule(function (v3) {
                 
                 return  new THREE.Color().setRGB(1, 1, 1);
