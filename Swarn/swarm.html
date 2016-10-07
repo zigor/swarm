@@ -48,7 +48,7 @@
 
         var toCone = function (swarm) {
             swarm.to(
-                function () { return random.inCone(radius - 100 + Math.random() * radius, 300) },
+                function () { return random.inCone(radius - 100 + Math.random() * radius, 500) },
                 null,
                 3000,
                 function () { toCylined(swarm) });
@@ -56,7 +56,7 @@
 
         var toCylined = function (swarm) {
             swarm.to(
-                function () { return random.inCylinder(radius - 100 + Math.random() * radius, 300) },
+                function () { return random.inCylinder(radius - 100 + Math.random() * radius, 500) },
                 null,
                 3000,
                 function () { toEllipsoid(swarm) });
