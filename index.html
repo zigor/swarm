@@ -1,1 +1,69 @@
-<h1>hello world </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Swarm Experiment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <style type="text/css">
+        body {
+            background: #000000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+    
+    <script src="/Scripts/utils.js"></script>
+    <script src="/Scripts/randoms.js"></script>
+    <script src="/Scripts/sample.js"></script>
+    <script src="/Scripts/swarm.js"></script>
+    
+    <script type="text/javascript">
+
+        var radius = 200;
+
+        var swarm = new Swarm(document.getElementById('container'), 10000);
+
+        var toEllipsoid = function(swarm, duration) {
+            swarm.to(
+                function () { return random.inEllipsoid(radius - 100 + Math.random() * radius, 500, 200); },
+                null,
+                duration || 3000,
+                function () { toSphere(swarm) });
+        }
+
+        var toSphere = function(swarm) {
+            swarm.to(
+                function () { return random.inSphere(radius - 100 + Math.random() * radius) },
+                null,
+                3000,
+                function () { toCone(swarm) });
+        }
+
+        var toCone = function (swarm) {
+            swarm.to(
+                function () { return random.inCone(radius - 100 + Math.random() * radius, 500) },
+                null,
+                3000,
+                function () { toCylined(swarm) });
+        }
+
+        var toCylined = function (swarm) {
+            swarm.to(
+                function () { return random.inCylinder(radius - 100 + Math.random() * radius, 500) },
+                null,
+                3000,
+                function () { toEllipsoid(swarm) });
+        }
+        
+        toEllipsoid(swarm, 100);
+
+    </script>
+</body>
+</html>
