@@ -56,31 +56,39 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var radius = 200;
+	var radius = 600;
 	
 	var transformations = [function (_) {
 	    return _.to(function () {
 	        return _randoms2.default.inSphere(radius - 100 + Math.random() * radius);
-	    }, null, 3000);
+	    }, null, 3000, randomEffect());
 	}, function (_) {
 	    return _.to(function () {
 	        return _randoms2.default.inCube(radius - 100 + Math.random() * radius);
-	    }, null, 3000);
+	    }, null, 3000, randomEffect());
 	}, function (_) {
 	    return _.to(function () {
-	        return _randoms2.default.inCone(radius - 100 + Math.random() * radius, 500);
-	    }, null, 3000);
+	        return _randoms2.default.inCone(radius - 100 + Math.random() * radius, 600);
+	    }, null, 3000, randomEffect());
 	}, function (_) {
 	    return _.to(function () {
 	        return _randoms2.default.inCylinder(radius - 100 + Math.random() * radius, 500);
-	    }, null, 3000);
+	    }, null, 3000, randomEffect());
 	}, function (_) {
 	    return _.to(function () {
-	        return _randoms2.default.inEllipsoid(radius - 100 + Math.random() * radius, 500, 200);
-	    }, null, 3000);
+	        return _randoms2.default.inEllipsoid(radius - 100 + Math.random() * radius, 500, 300);
+	    }, null, 3000, randomEffect());
 	}];
 	
-	var _ = new _swarm2.default(document.getElementById('container'), "sample", 10000);
+	var effect = [TWEEN.Easing.Bounce, TWEEN.Easing.Linear, TWEEN.Easing.Quadratic, TWEEN.Easing.Cubic, TWEEN.Easing.Quartic, TWEEN.Easing.Quintic, TWEEN.Easing.Sinusoidal, TWEEN.Easing.Exponential, TWEEN.Easing.Circular, TWEEN.Easing.Elastic, TWEEN.Easing.Back];
+	
+	var effectDirection = ["In", "Out", "InOut"];
+	
+	var randomEffect = function randomEffect() {
+	    return _randoms2.default.inArray(effect)[_randoms2.default.inArray(effectDirection)];
+	};
+	
+	var _ = new _swarm2.default(document.getElementById('container'), "sample", 50000);
 	
 	var go = function go() {
 	    _randoms2.default.inArray(transformations)(_).then(function () {
@@ -640,7 +648,7 @@
 	        }
 	    }, {
 	        key: 'to',
-	        value: function to(pointRule, colorRule, duration) {
+	        value: function to(pointRule, colorRule, duration, effect) {
 	
 	            if (pointRule != null) {
 	                this.sample.setPointRule(pointRule);
@@ -668,7 +676,7 @@
 	                    if (this.position.updateRange.count > 0) {
 	                        this.position.needsUpdate = true;
 	                    }
-	                }).easing(TWEEN.Easing.Bounce.Out).onComplete(function () {
+	                }).easing(effect || TWEEN.Easing.Bounce.Out).onComplete(function () {
 	                    resolve(self);
 	                }).start();
 	            });

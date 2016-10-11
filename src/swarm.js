@@ -24,7 +24,7 @@ export default class Swarm {
         render(this.renderer, this.scene, this.camera, this.name);
     }
 
-    to(pointRule, colorRule, duration) {
+    to(pointRule, colorRule, duration, effect) {
 
         if (pointRule != null) {
             this.sample.setPointRule(pointRule);
@@ -55,7 +55,7 @@ export default class Swarm {
                         this.position.needsUpdate = true;
                     }
                 })
-                .easing(TWEEN.Easing.Bounce.Out)
+                .easing(effect || TWEEN.Easing.Bounce.Out)
                 .onComplete(function () { resolve(self); })
                 .start();
         })
