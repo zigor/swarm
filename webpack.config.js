@@ -5,8 +5,8 @@ var webpack = require('webpack')
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
 module.exports = {
-
-    entry: './src/main',
+    entry: ['babel-polyfill', './src/main'],
+    
     output: {
         path: __dirname + '/dist',
         filename: 'build.js',
@@ -21,8 +21,6 @@ module.exports = {
     devtool: NODE_ENV === 'development' ? 'source-map' : null,
 
     plugins: [
-        new webpack.NoErrorsPlugin(),
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.DefinePlugin({ 'NODE_ENV': JSON.stringify(NODE_ENV) }), 
         new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false, dead_code: true, drop_debugger: true }, mangle : true,  })
     ],
@@ -32,14 +30,13 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel',
-                exclude: /node_modules/,
+                exclude: [/node_modules/],
                 query: {
                     presets: ['es2015']
                 },
                 "plugins": [
                      ["transform-runtime", {
-                        "polyfill": true,
-                        "regenerator": false
+                        "polyfill": false
                     }]
                 ]                
             }

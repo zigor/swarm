@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-import {} from './utils'
+import './utils'
 
 let _zero = new THREE.Vector3(0, 0, 0);
 let _white = new THREE.Color().setRGB(1, 1, 1);
