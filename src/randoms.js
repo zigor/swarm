@@ -1,7 +1,7 @@
 'use strict';
 
 import _inCone from './randoms/inCone';
-import _inCube from './randoms/inCube';
+import _inCube from './randoms/inCube'; 
 import _inCylinder from './randoms/inCylinder';
 import _inEllipsoid from './randoms/inEllipsoid';
 import _inSphere from './randoms/inSphere';

@@ -2,8 +2,8 @@
 
 import {} from './utils'
 
-var _zero = new THREE.Vector3(0, 0, 0);
-var _white = new THREE.Color().setRGB(1, 1, 1);
+let _zero = new THREE.Vector3(0, 0, 0);
+let _white = new THREE.Color().setRGB(1, 1, 1);
 
 export default class Sample {
     constructor(count) {

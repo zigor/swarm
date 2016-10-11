@@ -45,7 +45,7 @@ export default class Swarm {
                 .to({}, duration)
                 .onUpdate(function (step) {
 
-                    for (var i = 0; i < this.position.array.length; ++i) {
+                    for (let i = 0; i < this.position.array.length; ++i) {
                         this.position.array[i] = fromPosition[i] + (toPosition[i] - fromPosition[i]) * step;
                     }
 
@@ -61,9 +61,7 @@ export default class Swarm {
         })
     }
 }
-
-
-var getGeometry = function (scene, swarmName, sample) {
+let getGeometry = function (scene, swarmName, sample) {
 
     var geometry = new THREE.BufferGeometry();
 
@@ -79,7 +77,7 @@ var getGeometry = function (scene, swarmName, sample) {
     scene.add(points);
 };
 
-var prepareCamera = function () {
+let prepareCamera = function () {
 
     var camera = new THREE.PerspectiveCamera(27, window.innerWidth / window.innerHeight, 5, 3500);
     camera.position.z = 2750;
@@ -87,7 +85,7 @@ var prepareCamera = function () {
     return camera;
 };
 
-var prepareScene = function (swarmName, sample) {
+let prepareScene = function (swarmName, sample) {
 
     var scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0x050505, 2000, 3500);
@@ -97,7 +95,7 @@ var prepareScene = function (swarmName, sample) {
     return scene;
 };
 
-var prepareRenderer = function (scene) {
+let prepareRenderer = function (scene) {
 
     var renderer = new THREE.WebGLRenderer({ antialias: false });
 
@@ -108,7 +106,7 @@ var prepareRenderer = function (scene) {
     return renderer;
 };
 
-var init = function (renderer, scene, camera) {
+let init = function (renderer, scene, camera) {
 
     container.appendChild(renderer.domElement);
 
@@ -121,7 +119,7 @@ var init = function (renderer, scene, camera) {
     }, false);
 };
 
-var render = function (renderer, scene, camera, swarmName) {
+let render = function (renderer, scene, camera, swarmName) { 
     var time = Date.now() * 0.001;
 
     var points = scene.getObjectByName(swarmName);

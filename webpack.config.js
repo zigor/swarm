@@ -21,6 +21,8 @@ module.exports = {
     devtool: NODE_ENV === 'development' ? 'source-map' : null,
 
     plugins: [
+        new webpack.NoErrorsPlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
         new webpack.DefinePlugin({ 'NODE_ENV': JSON.stringify(NODE_ENV) }), 
         new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false, dead_code: true, drop_debugger: true }, mangle : true,  })
     ],
@@ -32,9 +34,14 @@ module.exports = {
                 loader: 'babel',
                 exclude: /node_modules/,
                 query: {
-                    presets: ['es2015'],
-                    plugins: ['transform-runtime']
-                }
+                    presets: ['es2015']
+                },
+                "plugins": [
+                     ["transform-runtime", {
+                        "polyfill": true,
+                        "regenerator": false
+                    }]
+                ]                
             }
         ]
     }
