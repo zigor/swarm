@@ -22,7 +22,7 @@ module.exports = {
 
     plugins: [
         new webpack.DefinePlugin({ 'NODE_ENV': JSON.stringify(NODE_ENV) }), 
-   //     new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false, dead_code: true, drop_debugger: true }, mangle : true,  })
+        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false, dead_code: true, drop_debugger: true }, mangle : true,  })
     ],
 
     module: {
