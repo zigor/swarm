@@ -1,6 +1,5 @@
 'use strict';
 
-import 'babel-polyfill';
 import randoms from './randoms';
 import Swarm from './swarm';
 
